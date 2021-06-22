@@ -1,7 +1,3 @@
-// pseudo code:
-// write a function that handles click event on the tattoo image. should this be a boolean value?
-// write a function that handles user vote on submit click and increments the vote count in firebase
-
 import './App.css';
 import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
