@@ -15,16 +15,13 @@ function App() {
   useEffect(() => {
     const dbRef = firebase.database().ref();
 
-    // event listener to fire when a db change occurs
+    // event listener for db changes
     dbRef.on('value', (response) => {
-      // console.log(response.val());
       const newState = [];
       const data = response.val();
 
-      // data.map() newState.push
       for (let key in data) {
         newState.push({ key: key, name: data[key]  });
-        // data.count 
       }
 
       setTattoos(newState);
@@ -35,14 +32,14 @@ function App() {
   
   const addEmUp = (event, userChoice) => {
     event.preventDefault();
-    // console.log('!!', userChoice);
 
+    // database reference with userChoice
     const dbRef = firebase.database().ref(userChoice);
 
-    // increment count property in firebase database
+    // increment count property
     dbRef.once('value', (snapshot) => {
       const data = snapshot.val();
-      // console.log(data);
+
       const updates = {};
       updates[`count`] = data.count + 1;
       dbRef.update(updates);
@@ -53,7 +50,6 @@ function App() {
   // event handler on form 
   const handleUserChoice = (event) => {
     setUserChoice(event.target.id);
-    // console.log(event.target.id);
   }
 
   return (
