@@ -65,22 +65,22 @@ function App() {
       </header>
       <section className="form-container wrapper">
         <form onSubmit={(event) => {addEmUp(event, userChoice)}} action="submit" type="radio" name="tattoo-poll">
-          <label htmlFor="lucky">
-            <img className="lucky-tatt" src={lucky} alt="" />
-            <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
+          <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
+          <label className="grid-lucky" htmlFor="tattoo1">
+            <img className="lucky-tatt" src={lucky} alt="a traditional tattoo with a lucky banner and four playing cards" />
           </label>
 
-          <label htmlFor="sailor">
-            <img className="sailor-tatt" src={sailor} alt="" />
-            <input onChange={handleUserChoice} type="radio" id="tattoo2" name="tattoo-poll" value={userChoice} />
+          <input onChange={handleUserChoice} type="radio" id="tattoo2" name="tattoo-poll" value={userChoice} />
+          <label className="grid-sailor" htmlFor="tattoo2">
+            <img className="sailor-tatt" src={sailor} alt="a traditional tattoo of a sailor framed with rope and an anchor" />
           </label>
 
-          <label htmlFor="panther">
-            <img className="panther-tatt" src={panther} alt="" />
-            <input onChange={handleUserChoice} type="radio" id="tattoo3" name="tattoo-poll" value={userChoice} />
+          <input onChange={handleUserChoice} type="radio" id="tattoo3" name="tattoo-poll" value={userChoice} />
+          <label className="grid-panther" htmlFor="tattoo3">
+            <img className="panther-tatt" src={panther} alt="a traditional tattoo of a panther head growling" />
           </label>
 
-          <button type="submit">Lock In Your Vote!</button>
+          <button className="grid-button" type="submit">Lock It In</button>
         </form>
       </section>
       

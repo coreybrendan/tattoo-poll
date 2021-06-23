@@ -40,7 +40,9 @@ img {
 
 /* header styles */
 header {
-  background-color: #f5e5cb;
+  /* background-color: #f5e5cb; */
+  background: rgb(255,241,220);
+  background: radial-gradient(circle, rgba(255,241,220,1) 0%, rgba(255,230,192,1) 60%, rgba(255,211,153,1) 100%);
   position: relative;
 }
 
@@ -49,6 +51,7 @@ h1 {
   /* font-family: 'Open Sans', sans-serif; */
   text-transform: uppercase;
   letter-spacing: 4px;
+  color: #262626;
   font-size: 3rem;
   text-align: center;
   padding: 8rem 0;
@@ -75,32 +78,49 @@ h1 {
 
 /* form-container styles */
 form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 4fr 1fr;
+}
+
+.grid-lucky {
+  grid-column: 1 / span 3;
+  grid-row: 1;
+}
+
+.grid-sailor {
+  grid-column: 2 / span 3;
+  grid-row: 1;
+}
+
+.grid-panther {
+  grid-column: 3 / span 3;
+  grid-row: 1;
+}
+
+.grid-button {
+  grid-column: 2;
+  grid-row: 4;
 }
 
 .form-container img {
-  padding: 80px 40px;
+  padding: 80px 0 0 20px;
+  width: calc(100vw / 3 - 60px);
 }
 
-label {
-  width: fit-content;
-}
-
-
-
-/* [type=radio] {
+input[type=radio] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-[type=radio] ~ img {
+.form-container img:hover,
+.form-container img:focus {
   cursor: pointer;
 }
 
-label[type=radio]:checked ~ img {
-  outline: 2px solid #f00;
-} */
+input[type=radio]:checked + label > img {
+  opacity: 0.7;
+}
+
