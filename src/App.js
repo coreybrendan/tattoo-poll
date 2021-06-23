@@ -61,6 +61,7 @@ function App() {
         <img className="right-swallow" src={rightSwallow} alt="a traditional swallow tattoo facing left" />
       </header>
       <section className="form-container wrapper">
+        <p>Shops are opening in Toronto, the summer months are finally here and warmer weather means less clothing and more skin. Naturally, that signals tattoo season is upon us. Help me decide my next tattoo from the options below!</p>
         <form onSubmit={(event) => {addEmUp(event, userChoice)}} action="submit" type="radio" name="tattoo-poll">
           <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
           <label className="grid-lucky" htmlFor="tattoo1">
@@ -80,19 +81,21 @@ function App() {
           <button className="grid-button" type="submit">Lock It In?!</button>
         </form>
       </section>
-      
-      <ul>
-        {
-          tattoos.map((tattoo) => {
-            // display tattoo name and count data
-            return (
-              <li key={tattoo.key}>
-                {tattoo.name.name}: {tattoo.name.count}
-              </li>
-            )
-          })
-        }
-      </ul>
+      <section className="results-container">
+        <ul>
+        <h2>Track The Live Results:</h2>
+          {
+            tattoos.map((tattoo) => {
+              // display tattoo name and count data
+              return (
+                <li key={tattoo.key}>
+                  {tattoo.name.name}: {tattoo.name.count}
+                </li>
+              )
+            })
+          }
+        </ul>
+      </section>
     </div>
   );
 }
