@@ -38,7 +38,7 @@ img {
 }
 
 .wrapper {
-  max-width: 1400px;
+  max-width: 1200px;
   width: 90%;
   margin: 0 auto;
 }
@@ -46,7 +46,6 @@ img {
 
 /* header styles */
 header {
-
   background: rgb(255,241,220);
   background: radial-gradient(circle, rgba(255,241,220,1) 0%, rgba(255,230,192,1) 60%, rgba(255,211,153,1) 100%);
   position: relative;
@@ -60,7 +59,6 @@ h1 {
   font-size: 3rem;
   text-align: center;
   padding: 8rem 0;
-  /* background-image: url(./assets/roses1.png); */
 }
 
 .left-swallow,
@@ -155,6 +153,10 @@ input[type=radio]:checked + label > img {
 /* /form-container styles */
 
 /* results-container styles */
+.results-container > ul:nth-child(1) {
+  margin-bottom: 0px;
+}
+
 ul::after {
   content: "";
   display: block;
@@ -198,4 +200,28 @@ li {
   font-family: 'Miltonian Tattoo', cursive;
   text-transform: uppercase;
   padding: 20px;
+}
+/* /results-container styles */
+
+/* footer styles */
+footer {
+  background: rgb(255,241,220);
+  background: radial-gradient(circle, rgba(255,241,220,1) 0%, rgba(255,230,192,1) 60%, rgba(255,211,153,1) 100%);
+}
+
+footer p {
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  letter-spacing: 0.8px;
+  line-height: 1.8rem;
+  color: #262626;
+  font-weight: 600;
+}
+
+footer img {
+  margin: 0 auto;
+  position: relative;
+  bottom: 60px;
 }
