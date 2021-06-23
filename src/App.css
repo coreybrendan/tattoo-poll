@@ -7,3 +7,100 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 *, *:before, *:after {box-sizing: inherit}
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+/* general styles */
+html {
+  font-size: 125%;
+}
+
+body {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrapper {
+  max-width: 1400px;
+  width: 90%;
+  margin: 0 auto;
+}
+/* /general styles */
+
+/* header styles */
+header {
+  background-color: #f5e5cb;
+  position: relative;
+}
+
+h1 {
+  font-family: 'Miltonian Tattoo', cursive;
+  /* font-family: 'Open Sans', sans-serif; */
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 3rem;
+  text-align: center;
+  padding: 8rem 0;
+  /* background-image: url(./assets/roses1.png); */
+}
+
+.left-swallow,
+.right-swallow {
+  width: 20%;
+}
+
+.left-swallow {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.right-swallow {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+}
+/* /header styles */
+
+/* form-container styles */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.form-container img {
+  padding: 80px 40px;
+}
+
+label {
+  width: fit-content;
+}
+
+
+
+/* [type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type=radio] ~ img {
+  cursor: pointer;
+}
+
+label[type=radio]:checked ~ img {
+  outline: 2px solid #f00;
+} */

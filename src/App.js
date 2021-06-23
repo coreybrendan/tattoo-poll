@@ -1,6 +1,14 @@
 import './App.css';
 import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
+import leftSwallow from './assets/left-swallow.png';
+import rightSwallow from './assets/right-swallow.png';
+// import smallStar from './assets/small.png';
+// import mediumStar from './assets/medium.png';
+// import largeStar from './assets/large.png';
+import lucky from './assets/lucky.png';
+import sailor from './assets/sailor.png';
+import panther from './assets/panther-head.png';
 
 function App() {
   // data stored in state
@@ -50,19 +58,31 @@ function App() {
 
   return (
     <div>
-      <form onSubmit={(event) => {addEmUp(event, userChoice)}} action="submit" type="radio" name="tattoo-poll">
-        <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
-        <label htmlFor="lucky">Lucky</label>
+      <header>
+        <h1>A tattoo tally</h1>
+        <img className="left-swallow" src={leftSwallow} alt="a traditional swallow tattoo facing right" />
+        <img className="right-swallow" src={rightSwallow} alt="a traditional swallow tattoo facing left" />
+      </header>
+      <section className="form-container wrapper">
+        <form onSubmit={(event) => {addEmUp(event, userChoice)}} action="submit" type="radio" name="tattoo-poll">
+          <label htmlFor="lucky">
+            <img className="lucky-tatt" src={lucky} alt="" />
+            <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
+          </label>
 
-        <input onChange={handleUserChoice} type="radio" id="tattoo2" name="tattoo-poll" value={userChoice} />
-        <label htmlFor="sailor">Sailor</label>
+          <label htmlFor="sailor">
+            <img className="sailor-tatt" src={sailor} alt="" />
+            <input onChange={handleUserChoice} type="radio" id="tattoo2" name="tattoo-poll" value={userChoice} />
+          </label>
 
-        <input onChange={handleUserChoice} type="radio" id="tattoo3" name="tattoo-poll" value={userChoice} />
-        <label htmlFor="panther">Panther</label>
+          <label htmlFor="panther">
+            <img className="panther-tatt" src={panther} alt="" />
+            <input onChange={handleUserChoice} type="radio" id="tattoo3" name="tattoo-poll" value={userChoice} />
+          </label>
 
-        <button type="submit">Lock In Your Vote!</button>
-      {/* <button onClick={addEmUp}>Lock In Your Vote!</button> */}
-      </form>
+          <button type="submit">Lock In Your Vote!</button>
+        </form>
+      </section>
       
       <ul>
         {
