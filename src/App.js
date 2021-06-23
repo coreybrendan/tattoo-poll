@@ -3,9 +3,6 @@ import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
 import leftSwallow from './assets/left-swallow.png';
 import rightSwallow from './assets/right-swallow.png';
-// import smallStar from './assets/small.png';
-// import mediumStar from './assets/medium.png';
-// import largeStar from './assets/large.png';
 import lucky from './assets/lucky.png';
 import sailor from './assets/sailor.png';
 import panther from './assets/panther-head.png';
@@ -80,7 +77,7 @@ function App() {
             <img className="panther-tatt" src={panther} alt="a traditional tattoo of a panther head growling" />
           </label>
 
-          <button className="grid-button" type="submit">Lock It In</button>
+          <button className="grid-button" type="submit">Lock It In?!</button>
         </form>
       </section>
       
