@@ -34,7 +34,6 @@ function App() {
   const addEmUp = (event, userChoice) => {
     event.preventDefault();
 
-    // database reference with userChoice
     const dbRef = firebase.database().ref(userChoice);
 
     // snapshot method reads current data in firebase
@@ -46,15 +45,17 @@ function App() {
       // error handling for no tattoo select
       if (data === null) {
         alert(`Select a tattoo to vote!`)
-        // event.history.back();
       }
       updates[`count`] = data.count + 1;
       dbRef.update(updates);
+
+      const location = document.querySelector('.results-container');
+      location.scrollIntoView();
     });
 
   }
   
-  // event handler on form 
+  // form event handler
   const handleUserChoice = (event) => {
     setUserChoice(event.target.id);
   }
@@ -64,21 +65,21 @@ function App() {
       <Header />
       <main>
         <section className="form-container wrapper">
-          <p>Shops are opening in Toronto, the summer months are finally here, and warmer weather means less clothing and more skin. Naturally, that signals tattoo season is upon us. Help me decide my next tattoo from the options below!</p>
+          <p>Shops are opening in Toronto, the summer months are finally here and warmer days mean less clothing — and more skin. Naturally, that signals tattoo season is upon us. Help me decide my next tattoo from the options below!</p>
           <form onSubmit={(event) => {addEmUp(event, userChoice)}} action="submit" type="radio" name="tattoo-poll">
             <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
             <label className="grid-lucky" htmlFor="tattoo1">
-              <img className="lucky-tatt" src={lucky} alt="a traditional tattoo with a lucky banner and four playing cards" />
+              <img src={lucky} alt="a traditional tattoo with a lucky banner and four playing cards" />
             </label>
 
             <input onChange={handleUserChoice} type="radio" id="tattoo2" name="tattoo-poll" value={userChoice} />
             <label className="grid-sailor" htmlFor="tattoo2">
-              <img className="sailor-tatt" src={sailor} alt="a traditional tattoo of a sailor framed with rope and an anchor" />
+              <img src={sailor} alt="a traditional tattoo of a sailor framed with rope and an anchor" />
             </label>
 
             <input onChange={handleUserChoice} type="radio" id="tattoo3" name="tattoo-poll" value={userChoice} />
             <label className="grid-panther" htmlFor="tattoo3">
-              <img className="panther-tatt" src={panther} alt="a traditional tattoo of a panther head growling" />
+              <img src={panther} alt="a traditional tattoo of a panther head growling" />
             </label>
 
             <button className="grid-button" type="submit">Click To Vote</button>
