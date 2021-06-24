@@ -11,6 +11,7 @@ function App() {
   // data stored in state
   const [tattoos, setTattoos] = useState([]);
   const [userChoice, setUserChoice] = useState('lucky');
+  const [disable, setDisable] = useState(false);
 
   // hook to call for firebase data
   useEffect(() => {
@@ -82,7 +83,7 @@ function App() {
               <img src={panther} alt="a traditional tattoo of a panther head growling" />
             </label>
 
-            <button className="grid-button" type="submit">Click To Vote</button>
+            <button className="grid-button" disabled={disable} onClick={() => setDisable(true)} type="submit">Click To Vote</button>
           </form>
         </section>
         <section className="results-container">
