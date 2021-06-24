@@ -38,15 +38,21 @@ function App() {
     // database reference with userChoice
     const dbRef = firebase.database().ref(userChoice);
 
-    // increment count property
+    // snapshot method reads current data in firebase
     dbRef.once('value', (snapshot) => {
       const data = snapshot.val();
 
+      // update method increments count property in firebase
       const updates = {};
+      // error handling for no tattoo select
+      if (data === null) {
+        alert(`Select a tattoo to vote!`)
+        // event.history.back();
+      }
       updates[`count`] = data.count + 1;
       dbRef.update(updates);
     });
-    
+
   }
   
   // event handler on form 
@@ -80,7 +86,7 @@ function App() {
               <img className="panther-tatt" src={panther} alt="a traditional tattoo of a panther head growling" />
             </label>
 
-            <button className="grid-button" type="submit">Lock It In?!</button>
+            <button className="grid-button" type="submit">Click To Vote</button>
           </form>
         </section>
         <section className="results-container">
