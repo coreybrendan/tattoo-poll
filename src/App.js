@@ -1,12 +1,11 @@
 import './App.css';
 import firebase from './firebase.js';
 import { useState, useEffect } from 'react';
-import leftSwallow from './assets/left-swallow.png';
-import rightSwallow from './assets/right-swallow.png';
+import Header from './Header.js';
+import Footer from './Footer.js';
 import lucky from './assets/lucky.png';
 import sailor from './assets/sailor.png';
 import panther from './assets/panther-head.png';
-import footerArt from './assets/footer-art.png'
 
 function App() {
   // data stored in state
@@ -62,11 +61,7 @@ function App() {
 
   return (
     <div>
-      <header>
-        <h1>A tattoo tally</h1>
-        <img className="left-swallow" src={leftSwallow} alt="a traditional swallow tattoo facing right" />
-        <img className="right-swallow" src={rightSwallow} alt="a traditional swallow tattoo facing left" />
-      </header>
+      <Header />
       <main>
         <section className="form-container wrapper">
           <p>Shops are opening in Toronto, the summer months are finally here, and warmer weather means less clothing and more skin. Naturally, that signals tattoo season is upon us. Help me decide my next tattoo from the options below!</p>
@@ -105,12 +100,7 @@ function App() {
           </ul>
         </section>
       </main>
-      <footer>
-        <p>Crafted by Corey Sheldrick</p>
-        <p>at Juno College of Technology</p>
-        <p>in Toronto, Ontario.</p>
-        <img src={footerArt} alt="An island scene with palm trees, and mountains." />
-      </footer>
+      <Footer />
     </div>
   );
 }
