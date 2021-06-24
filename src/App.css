@@ -83,7 +83,7 @@ h1 {
 .form-container p {
   width: 80%;
   margin: 0 auto;
-  padding-top: 60px;
+  padding-top: 50px;
   text-align: center;
   font-size: 1.2rem;
   letter-spacing: 0.8px;
@@ -131,8 +131,8 @@ form {
 
 .form-container img {
   opacity: 0.7;
-  padding: 80px 0 0 20px;
-  width: calc(100vw / 3 - 60px);
+  padding: 80px 10px 0 10px;
+  /* width: calc(100vw / 3 - 60px); */
 }
 
 input[type=radio] {
@@ -224,4 +224,67 @@ footer img {
   margin: 0 auto;
   position: relative;
   bottom: 60px;
+}
+/* /footer styles */
+
+/* media queries */
+@media (max-width: 803px) {
+  form {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 0.3fr;
+  }
+
+  .form-container img {
+    padding: 0;
+  }
+
+  .grid-lucky {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 auto;
+  }
+
+  .grid-sailor {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0 auto;
+  }
+
+  .grid-panther {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0 auto;
+  }
+
+  .grid-button {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  h2 {
+    text-align: center;
+    left: 0;
+  }
+
+  footer img {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 635px) {
+  .left-swallow,
+  .right-swallow {
+    width: 30%;
+  }
+}
+
+@media (max-width: 400px) {
+  .left-swallow,
+  .right-swallow {
+    width: 50%;
+  }
+
+  footer p {
+    top: 20px;
+  }
 }
