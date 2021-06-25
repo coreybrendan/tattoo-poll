@@ -83,7 +83,7 @@ function App() {
               <img src={panther} alt="a traditional tattoo of a panther head growling" />
             </label>
 
-            <button className="grid-button" disabled={disable} onClick={() => setDisable(true)} type="submit">Click To Vote</button>
+            <button className="grid-button" disabled={disable} onPress={() => setDisable(true)} type="submit">Click To Vote</button>
           </form>
         </section>
         <section className="results-container">
