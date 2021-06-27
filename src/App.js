@@ -1,5 +1,6 @@
 import './App.css';
 import firebase from './firebase.js';
+// import ChangeHighlight from "react-change-highlight";
 import { useState, useEffect } from 'react';
 import Header from './Header.js';
 import Footer from './Footer.js';
@@ -11,8 +12,38 @@ function App() {
   // data stored in state
   const [tattoos, setTattoos] = useState([]);
   const [userChoice, setUserChoice] = useState('lucky');
-  const [disable, setDisable] = useState(false);
-
+  // const [disable, setDisable] = useState(false);
+  const [show, toggleShow] = useState(true);
+  
+  const addEmUp = (event, userChoice) => {
+    event.preventDefault();
+    
+    const dbRef = firebase.database().ref(userChoice);
+    
+    // snapshot method reads current data in firebase
+    dbRef.once('value', (snapshot) => {
+      const data = snapshot.val();
+      
+      // update method increments count property in firebase
+      const updates = {};
+      // // error handling for no tattoo select
+      if (data === null) {
+        alert(`Select a tattoo to vote!`)
+      }
+      updates[`count`] = data.count + 1;
+      dbRef.update(updates);
+      
+      const location = document.querySelector('.results-container');
+      location.scrollIntoView();
+    });
+    
+  }
+  
+  // form event handler
+  const handleUserChoice = (event) => {
+    setUserChoice(event.target.id);
+  }
+  
   // hook to call for firebase data
   useEffect(() => {
     const dbRef = firebase.database().ref();
@@ -30,36 +61,6 @@ function App() {
     });
 
   }, []);
-
-  
-  const addEmUp = (event, userChoice) => {
-    event.preventDefault();
-
-    const dbRef = firebase.database().ref(userChoice);
-
-    // snapshot method reads current data in firebase
-    dbRef.once('value', (snapshot) => {
-      const data = snapshot.val();
-
-      // update method increments count property in firebase
-      const updates = {};
-      // error handling for no tattoo select
-      if (data === null) {
-        alert(`Select a tattoo to vote!`)
-      }
-      updates[`count`] = data.count + 1;
-      dbRef.update(updates);
-
-      const location = document.querySelector('.results-container');
-      location.scrollIntoView();
-    });
-
-  }
-  
-  // form event handler
-  const handleUserChoice = (event) => {
-    setUserChoice(event.target.id);
-  }
 
   return (
     <div>
@@ -83,7 +84,14 @@ function App() {
               <img src={panther} alt="a traditional tattoo of a panther head growling" />
             </label>
 
-            <button className="grid-button" disabled={disable} onPress={() => setDisable(true)} type="submit">Click To Vote</button>
+            {/* <button className="grid-button" disabled={disable} onClickCapture={() => setDisable(true)} type="submit">Click To Vote</button> */}
+            <button 
+              className="grid-button" 
+              type="submit" 
+              onClick={() => {
+                toggleShow(!show)
+              }} > {show ? 'Vote Now' : 'Thanks For Voting'}
+            </button>
           </form>
         </section>
         <section className="results-container">
