@@ -27,11 +27,12 @@ function App() {
       // update method increments count property in firebase
       const updates = {};
       // // error handling for no tattoo select
-      if (data === null) {
-        alert(`Select a tattoo to vote!`)
+      if (data !== null) {
+        updates[`count`] = data.count + 1;
+        dbRef.update(updates);
+      } else if (data === null) {
+        alert(`Select a tattoo to vote!`);
       }
-      updates[`count`] = data.count + 1;
-      dbRef.update(updates);
       
       const location = document.querySelector('.results-container');
       location.scrollIntoView();
@@ -54,7 +55,7 @@ function App() {
       const data = response.val();
 
       for (let key in data) {
-        newState.push({ key: key, name: data[key]  });
+        newState.push({ key: key, name: data[key] });
       }
 
       setTattoos(newState);
@@ -70,17 +71,17 @@ function App() {
           <p>Shops are opening in Toronto, the summer months are finally here and warmer days mean less clothing — and more skin. Naturally, that signals tattoo season is upon us. Help me decide my next tattoo from the options below!</p>
           <form onSubmit={(event) => {addEmUp(event, userChoice)}} action="submit" type="radio" name="tattoo-poll">
             <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
-            <label className="grid-lucky" htmlFor="tattoo1">
+            <label className="grid-lucky" htmlFor="tattoo1" >
               <img src={lucky} alt="a traditional tattoo with a lucky banner and four playing cards" />
             </label>
 
             <input onChange={handleUserChoice} type="radio" id="tattoo2" name="tattoo-poll" value={userChoice} />
-            <label className="grid-sailor" htmlFor="tattoo2">
+            <label className="grid-sailor" htmlFor="tattoo2" >
               <img src={sailor} alt="a traditional tattoo of a sailor framed with rope and an anchor" />
             </label>
 
             <input onChange={handleUserChoice} type="radio" id="tattoo3" name="tattoo-poll" value={userChoice} />
-            <label className="grid-panther" htmlFor="tattoo3">
+            <label className="grid-panther" htmlFor="tattoo3" >
               <img src={panther} alt="a traditional tattoo of a panther head growling" />
             </label>
 
