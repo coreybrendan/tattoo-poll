@@ -198,6 +198,11 @@ li {
   text-transform: uppercase;
   padding: 20px;
 }
+
+.rc-highlight {
+  background-color: #f8ffb4;
+  transition: all 0.5s ease-in-out;
+}
 /* /results-container styles */
 
 /* footer styles */

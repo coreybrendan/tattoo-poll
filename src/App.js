@@ -1,7 +1,7 @@
 import './App.css';
 import firebase from './firebase.js';
-// import ChangeHighlight from "react-change-highlight";
-import { useState, useEffect } from 'react';
+import ChangeHighlight from "react-change-highlight";
+import React, { useState, useEffect } from 'react';
 import Header from './Header.js';
 import Footer from './Footer.js';
 import lucky from './assets/lucky.png';
@@ -14,6 +14,7 @@ function App() {
   const [userChoice, setUserChoice] = useState('lucky');
   // const [disable, setDisable] = useState(false);
   const [show, toggleShow] = useState(true);
+  const ref = React.createRef();
   
   const addEmUp = (event, userChoice) => {
     event.preventDefault();
@@ -71,25 +72,26 @@ function App() {
           <p>Shops are opening in Toronto, the summer months are finally here and warmer days mean less clothing — and more skin. Naturally, that signals tattoo season is upon us. Help me decide my next tattoo from the options below!</p>
           <form onSubmit={(event) => {addEmUp(event, userChoice)}} action="submit" type="radio" name="tattoo-poll">
             <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
-            <label className="grid-lucky" htmlFor="tattoo1" >
-              <img src={lucky} alt="a traditional tattoo with a lucky banner and four playing cards" />
+            <label className="grid-lucky" htmlFor="tattoo1" tabIndex="0" >
+              <img src={lucky} alt="a traditional tattoo with a lucky banner and four playing cards" title="Lucky" />
             </label>
 
             <input onChange={handleUserChoice} type="radio" id="tattoo2" name="tattoo-poll" value={userChoice} />
-            <label className="grid-sailor" htmlFor="tattoo2" >
-              <img src={sailor} alt="a traditional tattoo of a sailor framed with rope and an anchor" />
+            <label className="grid-sailor" htmlFor="tattoo2" tabIndex="0" >
+              <img src={sailor} alt="a traditional tattoo of a sailor framed with rope and an anchor" title="Sailor" />
             </label>
 
             <input onChange={handleUserChoice} type="radio" id="tattoo3" name="tattoo-poll" value={userChoice} />
-            <label className="grid-panther" htmlFor="tattoo3" >
-              <img src={panther} alt="a traditional tattoo of a panther head growling" />
+            <label className="grid-panther" htmlFor="tattoo3" tabIndex="0" >
+              <img src={panther} alt="a traditional tattoo of a panther head growling" title="Panther" />
             </label>
 
-            {/* <button className="grid-button" disabled={disable} onClickCapture={() => setDisable(true)} type="submit">Click To Vote</button> */}
             <button 
               className="grid-button" 
               type="submit" 
+              // disabled={disable}
               onClick={() => {
+                // setDisable(true)
                 toggleShow(!show)
               }} > {show ? 'Vote Now' : 'Thanks For Voting'}
             </button>
@@ -102,9 +104,11 @@ function App() {
               tattoos.map((tattoo) => {
                 // display tattoo name and count data
                 return (
-                  <li key={tattoo.key}>
-                    {tattoo.name.name}: {tattoo.name.count}
-                  </li>
+                  <ChangeHighlight key={tattoo.key}>
+                    <li ref={ref}>
+                      {tattoo.name.name}: {tattoo.name.count}
+                    </li>
+                  </ChangeHighlight>
                 )
               })
             }
