@@ -12,7 +12,7 @@ function App() {
   // data stored in state
   const [tattoos, setTattoos] = useState([]);
   const [userChoice, setUserChoice] = useState('lucky');
-  // const [disable, setDisable] = useState(false);
+  const [disable, setDisable] = useState(false);
   const [show, toggleShow] = useState(true);
   const ref = React.createRef();
   
@@ -72,26 +72,26 @@ function App() {
           <p>Shops are opening in Toronto, the summer months are finally here and warmer days mean less clothing — and more skin. Naturally, that signals tattoo season is upon us. Help me decide my next tattoo from the options below!</p>
           <form onSubmit={(event) => {addEmUp(event, userChoice)}} action="submit" type="radio" name="tattoo-poll">
             <input onChange={handleUserChoice} type="radio" id="tattoo1" name="tattoo-poll" value={userChoice} />
-            <label className="grid-lucky" htmlFor="tattoo1" tabIndex="0" >
+            <label className="grid-lucky" htmlFor="tattoo1" >
               <img src={lucky} alt="a traditional tattoo with a lucky banner and four playing cards" title="Lucky" />
             </label>
 
             <input onChange={handleUserChoice} type="radio" id="tattoo2" name="tattoo-poll" value={userChoice} />
-            <label className="grid-sailor" htmlFor="tattoo2" tabIndex="0" >
+            <label className="grid-sailor" htmlFor="tattoo2" >
               <img src={sailor} alt="a traditional tattoo of a sailor framed with rope and an anchor" title="Sailor" />
             </label>
 
             <input onChange={handleUserChoice} type="radio" id="tattoo3" name="tattoo-poll" value={userChoice} />
-            <label className="grid-panther" htmlFor="tattoo3" tabIndex="0" >
+            <label className="grid-panther" htmlFor="tattoo3" >
               <img src={panther} alt="a traditional tattoo of a panther head growling" title="Panther" />
             </label>
 
             <button 
               className="grid-button" 
               type="submit" 
-              // disabled={disable}
+              disabled={disable}
               onClick={() => {
-                // setDisable(true)
+                setDisable(!setDisable);
                 toggleShow(!show)
               }} > {show ? 'Vote Now' : 'Thanks For Voting'}
             </button>
