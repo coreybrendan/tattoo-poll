@@ -1,6 +1,5 @@
 import './App.css';
 import firebase from './firebase.js';
-import ChangeHighlight from "react-change-highlight";
 import React, { useState, useEffect } from 'react';
 import Header from './Header.js';
 import Footer from './Footer.js';
@@ -14,8 +13,7 @@ function App() {
   const [userChoice, setUserChoice] = useState('lucky');
   const [disable, setDisable] = useState(false);
   const [show, toggleShow] = useState(true);
-  const ref = React.createRef();
-  
+
   const addEmUp = (event, userChoice) => {
     event.preventDefault();
     
@@ -88,12 +86,12 @@ function App() {
 
             <button 
               className="grid-button" 
-              type="submit" 
-              disabled={disable}
+              // type="submit" 
               onClick={() => {
-                setDisable(!setDisable);
+                setDisable(true);
                 toggleShow(!show)
-              }} > {show ? 'Vote Now' : 'Thanks For Voting'}
+              }}  
+              disabled={disable} > {show ? 'Vote Now' : 'Thanks For Voting'}
             </button>
           </form>
         </section>
@@ -104,11 +102,11 @@ function App() {
               tattoos.map((tattoo) => {
                 // display tattoo name and count data
                 return (
-                  <ChangeHighlight key={tattoo.key}>
-                    <li ref={ref}>
+                  <div key={tattoo.key}>
+                    <li>
                       {tattoo.name.name}: {tattoo.name.count}
                     </li>
-                  </ChangeHighlight>
+                  </div>
                 )
               })
             }
