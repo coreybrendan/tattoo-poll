@@ -11,7 +11,7 @@ function App() {
   // data stored in state
   const [tattoos, setTattoos] = useState([]);
   const [userChoice, setUserChoice] = useState('lucky');
-  const [disable, setDisable] = useState(false);
+  // const [isDisabled, setIsDisabled] = useState(false);
   const [show, toggleShow] = useState(true);
 
   const addEmUp = (event, userChoice) => {
@@ -86,12 +86,13 @@ function App() {
 
             <button 
               className="grid-button" 
-              // type="submit" 
+              type="submit"
               onClick={() => {
-                setDisable(true);
+                // setIsDisabled(true);
                 toggleShow(!show)
               }}  
-              disabled={disable} > {show ? 'Vote Now' : 'Thanks For Voting'}
+              // disabled={isDisabled} 
+              > {show ? 'Vote Now' : 'Thanks For Voting'}
             </button>
           </form>
         </section>
